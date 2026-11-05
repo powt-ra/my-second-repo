@@ -3,17 +3,25 @@ from character import Character
 def main():
     hero = Character("Knight", 30, 5)
     enemy = Character("Goblin", 20, 3)
+    enemy2 = Character("Slime", 20 ,5)
+    enemies = [enemy, enemy2]
 
     print(hero)
     print(enemy)
+    print(enemy2)
     print()
 
     while hero.is_alive() and enemy.is_alive():
-        hero.attack(enemy)
         if enemy.is_alive():
-            enemy.attack(hero)
+            hero.attack(enemy)
+        else:
+            hero.attack(enemy2)
+        for e in enemies:
+            if hero.is_alive() and enemy.is_alive():
+                e.attack(hero)                  
         print(hero)
         print(enemy)
+        print(enemy2)
         print()
 
     print("Battle over!")
